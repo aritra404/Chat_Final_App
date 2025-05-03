@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1061956006920",
+    "project_id": "newchat-2cd01",
+    "storage_bucket": "newchat-2cd01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1061956006920:android:71fa2e2b6f06b6e63d8dbd",
+        "android_client_info": {
+          "package_name": "aritra.seal.new_chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQrFMhBXyG8hgA8mdEu2Jmswol4jmPvq8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="1dp"
+    android:layout_marginLeft="20dp"
+    android:padding="10dp">
+
+    <!-- Main Message Text -->
+
+    <!-- Timestamp below the message text -->
+
+    <TextView
+        android:id="@+id/messageText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/rounded_edit_text"
+        android:backgroundTint="#7E60BF"
+        android:padding="10dp"
+        android:text="Message text here"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/messageTimestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/messageText"
+        android:layout_alignStart="@id/messageText"
+        android:layout_marginTop="2dp"
+        android:text="12:45 PM"
+        android:textColor="@color/white"
+        android:textSize="12sp" />
+
+    <!-- Seen/Unseen Indicator next to Timestamp -->
+    <TextView
+        android:id="@+id/seenIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/messageText"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="7dp"
+        android:layout_toEndOf="@id/messageTimestamp"
+        android:text="Seen"
+        android:textColor="@color/white"
+        android:textSize="12sp" />
+</RelativeLayout>

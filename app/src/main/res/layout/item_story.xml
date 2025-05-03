@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="8dp">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <!-- Replace the View with a CardView for the ring -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/story_ring"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:cardCornerRadius="40dp"
+            app:cardBackgroundColor="@color/story_unviewed_ring"
+            android:layout_gravity="center">
+
+            <!-- Inner card to create ring effect -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                app:cardCornerRadius="36dp"
+                android:layout_gravity="center">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/story_profile_image"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:src="@drawable/user"/>
+
+            </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/story_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="14sp"
+        android:textColor="#FFFFFF"
+        android:maxWidth="100dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:text="Username"/>
+</LinearLayout>

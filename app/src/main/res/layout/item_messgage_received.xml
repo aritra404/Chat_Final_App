@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="150dp"
+    android:layout_marginLeft="20dp"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/messageText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_edit_text"
+        android:text="Message text here"
+        android:padding="10dp"
+        android:backgroundTint="#F4F6FF"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+    android:textColor="@color/black"
+    android:textSize="18sp"/>
+
+    <!-- Timestamp below the message text -->
+    <TextView
+        android:id="@+id/messageTimestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/messageText"
+        android:layout_alignStart="@id/messageText"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="2dp"
+        android:text="12:45 PM"
+        android:textColor="@color/white"
+        android:textSize="12sp" />
+</RelativeLayout>
+
