@@ -87,12 +87,16 @@ class SignUpActivity : AppCompatActivity() {
                             uploadProfileImage(imageUri!!) { downloadUrl ->
                                 if (downloadUrl != null) {
                                     updateUserProfile(username, downloadUrl)
-                                    saveUserToDatabase(username, userId, email, downloadUrl, publicKeyString)
+                                    if (publicKeyString != null) {
+                                        saveUserToDatabase(username, userId, email, downloadUrl, publicKeyString)
+                                    }
                                 }
                             }
                         } else {
                             updateUserProfile(username, null)
-                            saveUserToDatabase(username, userId, email, null, publicKeyString)
+                            if (publicKeyString != null) {
+                                saveUserToDatabase(username, userId, email, null, publicKeyString)
+                            }
                         }
                     }
                 } else {

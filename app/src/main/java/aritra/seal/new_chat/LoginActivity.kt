@@ -20,9 +20,22 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
 
+        // Initialize Firebase Auth
         auth = Firebase.auth
+
+        // Check if user is signed in (non-null)
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            // User is already logged in, navigate directly to MainActivity
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish() // Close LoginActivity so user can't navigate back
+            return // Exit onCreate to prevent setting up the login UI
+        }
+
+        // Continue with login UI setup only if no user is currently signed in
+        setContentView(R.layout.activity_login)
 
         val email = findViewById<EditText>(R.id.emailEditText)
         val password = findViewById<EditText>(R.id.passwordEditText)
@@ -64,5 +77,10 @@ class LoginActivity : AppCompatActivity() {
                     ).show()
                 }
             }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
     }
 }

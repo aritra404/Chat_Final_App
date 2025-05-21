@@ -10,11 +10,12 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class MessageAdapter(private val messages: List<aritra.seal.new_chat.Message>, private val currentUserId: String) :
+class MessageAdapter(private val messages: List<Message>, private val currentUserId: String) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val VIEW_TYPE_SENT = 1
     private val VIEW_TYPE_RECEIVED = 2
+    private val TAG = "MessageAdapter"
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == VIEW_TYPE_SENT) {
@@ -29,26 +30,14 @@ class MessageAdapter(private val messages: List<aritra.seal.new_chat.Message>, p
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val message = messages[position]
 
-        // Step 1: If the message text is encrypted (check for some flag or condition), decrypt it
-        if (message.text.startsWith("ENCRYPTED_")) { // Use your condition here to check if it's encrypted
-            // Step 2: Retrieve the private key from the Keystore
-            val privateKey = EncryptionUtils.getPrivateKeyFromKeystore()
-
-            // Step 3: Decrypt the AES key (if encrypted) using RSA and the private key
-            val decryptedAESKey = EncryptionUtils.decryptAESKeyWithRSA(message.encryptedAESKey, privateKey)
-
-            // Step 4: Decrypt the message using the decrypted AES key
-            val decryptedMessage = EncryptionUtils.decryptMessageAES(message.text, decryptedAESKey)
-            Log.d("MessageAdapter", "Decrypted message: $decryptedMessage")
-
-            // Step 5: Set the decrypted message as the original message text
-            message.text = decryptedMessage
-        }
-
-        if (holder is SentMessageViewHolder) {
-            holder.bind(message)
-        } else if (holder is ReceivedMessageViewHolder) {
-            holder.bind(message)
+        try {
+            if (holder is SentMessageViewHolder) {
+                holder.bind(message)
+            } else if (holder is ReceivedMessageViewHolder) {
+                holder.bind(message)
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Error binding message at position $position: ${e.message}")
         }
     }
 
@@ -63,21 +52,31 @@ class MessageAdapter(private val messages: List<aritra.seal.new_chat.Message>, p
         private val seenIndicator: TextView = itemView.findViewById(R.id.seenIndicator)
         private val messageTime: TextView = itemView.findViewById(R.id.messageTimestamp)
 
-        fun bind(message: aritra.seal.new_chat.Message) {
+        fun bind(message: Message) {
             seenIndicator.visibility = if (message.seen) View.VISIBLE else View.GONE
 
-            // Format timestamp to a readable time, e.g., "12:45 PM"
+            // Format timestamp to a readable time
             val formattedTime = SimpleDateFormat("hh:mm a", Locale.getDefault()).format(Date(message.timestamp))
             messageTime.text = formattedTime
+
+            // Display message text (should be plaintext for sent messages)
             messageText.text = message.text
         }
     }
 
     inner class ReceivedMessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val messageText: TextView = itemView.findViewById(R.id.messageText)
+        private val messageTime: TextView? = itemView.findViewById(R.id.messageTimestamp)
 
-        fun bind(message: aritra.seal.new_chat.Message) {
+        fun bind(message: Message) {
+            // Display message text (should be decrypted for received messages)
             messageText.text = message.text
+
+            // Set timestamp if available in the layout
+            messageTime?.let {
+                val formattedTime = SimpleDateFormat("hh:mm a", Locale.getDefault()).format(Date(message.timestamp))
+                it.text = formattedTime
+            }
         }
     }
 }
