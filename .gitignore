@@ -13,3 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+*.json
+service_account_key.json
+app/src/main/res/raw/service_account_key.json
