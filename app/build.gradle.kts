@@ -39,6 +39,19 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    packaging {
+        resources {
+            excludes += "META-INF/DEPENDENCIES"
+            excludes += "META-INF/LICENSE"
+            excludes += "META-INF/LICENSE.txt"
+            excludes += "META-INF/license.txt"
+            excludes += "META-INF/NOTICE"
+            excludes += "META-INF/NOTICE.txt"
+            excludes += "META-INF/notice.txt"
+            excludes += "META-INF/ASL2.0"
+            excludes += "META-INF/INDEX.LIST"
+        }
+    }
 }
 
 dependencies {
@@ -52,6 +65,8 @@ dependencies {
     implementation(libs.firebase.database.ktx)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.swiperefreshlayout)
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
 
@@ -76,5 +91,18 @@ dependencies {
     // Circle ImageView
     implementation ("de.hdodenhof:circleimageview:3.1.0")
 
+    // Volley for HTTP requests
+    implementation("com.android.volley:volley:1.2.1")
 
+
+    // Google Auth for FCM V1
+    implementation("com.google.auth:google-auth-library-oauth2-http:1.23.0") {
+        exclude(group = "org.apache.httpcomponents", module = "httpclient")
+    }
+}
+
+configurations {
+    all {
+        exclude(group = "org.apache.httpcomponents", module = "httpclient")
+    }
 }

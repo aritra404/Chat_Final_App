@@ -4,20 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/bg_gradient_dark"
     tools:context=".Splash_Activity">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/splashIcon"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         android:contentDescription="App Logo"
-        android:src="@drawable/ic_chat_bubble"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/ic_app_new"
+        app:civ_border_width="4dp"
+        app:civ_border_color="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/appTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4" />
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/appTitle"
@@ -25,9 +27,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="SecureChat"
-        android:textColor="#333333"
-        android:textSize="28sp"
-        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        android:fontFamily="sans-serif-black"
+        android:letterSpacing="0.05"
+        app:layout_constraintBottom_toTopOf="@+id/appSlogan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/splashIcon" />
@@ -38,8 +42,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Encrypted Messaging for Everyone"
-        android:textColor="#666666"
+        android:textColor="#B0BEC5"
         android:textSize="16sp"
+        android:letterSpacing="0.02"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appTitle" />
@@ -49,23 +55,23 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:indeterminateTint="#4CAF50"
+        android:layout_marginBottom="24dp"
+        android:indeterminateTint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/initializingText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appSlogan" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/initializingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="48dp"
         android:text="Initializing Encryption..."
-        android:textColor="#999999"
+        android:textColor="#90A4AE"
         android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/versionText"
@@ -73,10 +79,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="v1.0.0"
-        android:textColor="#BBBBBB"
+        android:layout_marginEnd="16dp"
+        android:textColor="#546E7A"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

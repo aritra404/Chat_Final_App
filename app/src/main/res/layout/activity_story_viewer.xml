@@ -5,54 +5,189 @@
     android:layout_height="match_parent"
     android:background="@android:color/black">
 
+    <!-- Main Story Image -->
     <ImageView
         android:id="@+id/story_image_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"/>
 
-    <aritra.seal.new_chat.Story.StoriesProgressView
-        android:id="@+id/stories_progress"
+    <!-- Top Gradient Overlay -->
+    <View
         android:layout_width="match_parent"
-        android:layout_height="4dp"
+        android:layout_height="120dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"/>
+        android:background="@drawable/gradient_overlay_top"/>
 
+    <!-- Progress Bar Container -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
+
+        <aritra.seal.new_chat.ui.story.StoriesProgressView
+            android:id="@+id/stories_progress"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- User Info Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp">
+
+            <!-- Profile Picture -->
+            <ImageView
+                android:id="@+id/profile_image_view"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@android:drawable/sym_def_app_icon"
+                android:background="@null"
+
+                android:scaleType="centerCrop"
+                android:layout_marginEnd="12dp"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/username_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:shadowColor="@android:color/black"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="2"/>
+
+                <TextView
+                    android:id="@+id/time_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#CCCCCC"
+                    android:textSize="12sp"
+                    android:text="2h ago"
+                    android:shadowColor="@android:color/black"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="2"/>
+
+            </LinearLayout>
+
+            <!-- More Options -->
+            <TextView
+                android:id="@+id/more_options_view"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:text="⋮"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:background="#33FFFFFF"
+                android:clickable="true"
+                android:focusable="true"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Navigation Areas -->
     <View
         android:id="@+id/prev_click_area"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:background="?android:attr/selectableItemBackground"/>
 
     <View
         android:id="@+id/next_click_area"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignParentEnd="true"
+        android:background="?android:attr/selectableItemBackground"/>
 
+    <!-- Bottom Content Area -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_alignParentBottom="true"
-        android:padding="16dp"
-        android:background="@drawable/gradient_black_transparent">
+        android:padding="20dp"
+        android:background="@color/black">
 
-        <TextView
-            android:id="@+id/username_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:textSize="18sp"/>
-
+        <!-- Caption -->
         <TextView
             android:id="@+id/caption_text_view"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
-            android:layout_marginTop="4dp"/>
+            android:textSize="16sp"
+            android:lineSpacingExtra="4dp"
+            android:shadowColor="@android:color/black"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="3"
+            android:layout_marginBottom="16dp"/>
+
+            </LinearLayout>
+
+
+    <!-- Pause Indicator -->
+    <TextView
+        android:id="@+id/pause_indicator"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:text="⏸"
+        android:textColor="@android:color/white"
+        android:textSize="32sp"
+        android:gravity="center"
+        android:background="#88000000"
+        android:visibility="gone"
+        android:alpha="0.8"/>
+
+    <!-- Story Viewers Count (Bottom Right) -->
+    <LinearLayout
+        android:id="@+id/viewers_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:background="#66000000"
+        android:padding="8dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="👁"
+            android:textSize="14sp"
+            android:layout_marginEnd="4dp"/>
+
+        <TextView
+            android:id="@+id/viewers_count_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"/>
+
     </LinearLayout>
+
 </RelativeLayout>

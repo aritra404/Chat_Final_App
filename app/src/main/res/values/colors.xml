@@ -1,12 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="story_unviewed_ring">#8E9EFF</color>
-    <color name="story_viewed_ring">#80808080</color>
+    <!-- Brand Colors -->
+    <!-- Brand Colors -->
+    <color name="primary_brand">#2563EB</color> <!-- Royal Blue -->
+    <color name="primary_variant">#1E40AF</color> <!-- Deep Blue -->
+    <color name="secondary_brand">#06B6D4</color> <!-- Cyan Accent -->
+    
+    <!-- Base Colors (Dark Theme) -->
+    <color name="background_main">#0F0F0F</color> <!-- Deep Black -->
+    <color name="background_surface">#1C1C1E</color> <!-- Gray-Black for Cards -->
+    <color name="background_highlight">#2C2C2E</color> <!-- Lighter Gray for Interactivity -->
+    
+    <!-- Text Colors -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#8E8E93</color>
+    <color name="text_tertiary">#48484A</color>
+    
+    <!-- Functional Colors -->
+    <color name="accent_blue">#3B82F6</color>
+    <color name="accent_purple">#8B5CF6</color>
+    <color name="accent_pink">#DB2777</color>
+    <color name="error_red">#EF4444</color>
+    <color name="success_green">#10B981</color>
+
+    <!-- Message Bubbles -->
+    <!-- Message Bubbles -->
+    <color name="bubble_sent_start">#2563EB</color> <!-- Royal Blue -->
+    <color name="bubble_sent_end">#4F46E5</color> <!-- Indigo -->
+    <color name="bubble_received">#2C2C2E</color>
+
+    <!-- UI Elements -->
+    <color name="story_ring_unviewed">#2563EB</color>
+    <color name="story_ring_viewed">#3A3A3C</color>
+    <color name="divider">#27272A</color>
+    
+    <!-- Legacy Mappings for Compatibility (Required for existing layouts) -->
+    <color name="purple_200">#93C5FD</color> <!-- Light Blue -->
+    <color name="purple_500">#2563EB</color> <!-- Royal Blue -->
+    <color name="purple_700">#3700B3</color>
+    <color name="teal_200">#03DAC5</color>
+    <color name="teal_700">#018786</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="story_unviewed_ring">#2563EB</color>
+    <color name="story_viewed_ring">#3A3A3C</color>
+
+    <color name="background_dark">@color/background_main</color>
+    <color name="card_background_dark">@color/background_surface</color>
+    <color name="input_background_dark">@color/background_highlight</color>
+    <color name="text_primary_dark">@color/text_primary</color>
+    <color name="text_secondary_dark">@color/text_secondary</color>
+    <color name="text_hint_dark">@color/text_tertiary</color>
+    
+    <color name="image_placeholder_dark">@color/background_highlight</color>
+    <color name="image_placeholder_overlay_dark">#66000000</color>
+
+    <!-- Legacy Button Colors (Mapped to new palette) -->
+    <color name="button_primary_start">@color/primary_brand</color>
+    <color name="button_primary_end">@color/primary_variant</color>
+    <color name="button_accent_start">@color/secondary_brand</color>
+    <color name="button_accent_end">@color/accent_pink</color>
+    
+    <color name="transparent">#00000000</color>
 </resources>

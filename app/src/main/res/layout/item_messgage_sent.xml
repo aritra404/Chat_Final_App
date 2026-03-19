@@ -1,49 +1,53 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="5dp"
-    android:layout_marginEnd="1dp"
-    android:layout_marginLeft="20dp"
-    android:padding="10dp">
+    android:paddingHorizontal="12dp"
+    android:paddingVertical="1dp">
 
     <!-- Main Message Text -->
-
-    <!-- Timestamp below the message text -->
-
     <TextView
         android:id="@+id/messageText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="5dp"
-        android:background="@drawable/rounded_edit_text"
-        android:backgroundTint="#7E60BF"
-        android:padding="10dp"
+        android:background="@drawable/bg_message_sent"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="10dp"
         android:text="Message text here"
         android:textColor="@color/white"
-        android:textSize="18sp" />
+        android:textSize="16sp"
+        android:fontFamily="sans-serif"
+        android:lineSpacingExtra="3dp"
+        android:maxWidth="280dp"
+        android:elevation="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/messageTimestamp"
+    <!-- Timestamp and Seen Indicator Container -->
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/messageText"
-        android:layout_alignStart="@id/messageText"
+        android:orientation="horizontal"
         android:layout_marginTop="2dp"
-        android:text="12:45 PM"
-        android:textColor="@color/white"
-        android:textSize="12sp" />
+        app:layout_constraintTop_toBottomOf="@id/messageText"
+        app:layout_constraintEnd_toEndOf="@id/messageText">
 
-    <!-- Seen/Unseen Indicator next to Timestamp -->
-    <TextView
-        android:id="@+id/seenIndicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/messageText"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="7dp"
-        android:layout_toEndOf="@id/messageTimestamp"
-        android:text="Seen"
-        android:textColor="@color/white"
-        android:textSize="12sp" />
-</RelativeLayout>
+        <TextView
+            android:id="@+id/messageTimestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12:45 PM"
+            android:textColor="@color/text_secondary"
+            android:textSize="10sp"
+            android:layout_marginEnd="4dp"/>
+
+        <TextView
+            android:id="@+id/seenIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seen"
+            android:textColor="@color/text_secondary"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
